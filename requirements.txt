@@ -1,0 +1,8 @@
+# Runtime for the API (what Vercel installs). Seeding and anomaly detection need requirements-dev.txt.
+anthropic==1.13.0
+fastapi==0.143.0
+psycopg[binary]==3.3.6
+pydantic==2.14.1
+reportlab==5.0.1
+SQLAlchemy==2.1.4
+sqlglot==30.22.0

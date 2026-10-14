@@ -1,0 +1,20 @@
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: pid
+      POSTGRES_PASSWORD: pid_local_dev
+      POSTGRES_DB: pid
+    ports:
+      - "5434:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U pid -d pid"]
+      interval: 2s
+      timeout: 3s
+      retries: 30
+
+
+volumes:
+  pgdata:

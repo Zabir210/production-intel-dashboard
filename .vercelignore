@@ -1,0 +1,9 @@
+.venv
+.env
+.env.*
+!.env.example
+.claude
+frontend/node_modules
+frontend/dist
+backend/tests
+**/__pycache__

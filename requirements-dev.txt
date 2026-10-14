@@ -1,0 +1,9 @@
+-r requirements.txt
+# Seeding + Isolation Forest (run locally or in CI, never in the deployed function)
+numpy==2.5.4
+pandas==3.0.6
+scikit-learn==1.9.1
+# Local server + tests
+uvicorn[standard]==0.54.0
+httpx==0.28.1
+pytest==9.1.1
