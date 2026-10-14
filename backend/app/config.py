@@ -28,6 +28,9 @@ SHIFT_MINUTES = 480
 BREAK_MINUTES = 30
 PLANNED_MINUTES = SHIFT_MINUTES - BREAK_MINUTES
 
+# Plant-local clock for "generated at" stamps (servers such as Vercel run on UTC).
+PLANT_TZ = os.environ.get("PLANT_TZ", "America/Los_Angeles")
+
 
 def llm_configured() -> bool:
     return bool(os.environ.get("ANTHROPIC_API_KEY") or os.environ.get("ANTHROPIC_AUTH_TOKEN"))

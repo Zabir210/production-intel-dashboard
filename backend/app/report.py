@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import io
 from datetime import datetime
+from zoneinfo import ZoneInfo
 
 from reportlab.lib import colors
 from reportlab.lib.pagesizes import letter
@@ -11,7 +12,7 @@ from reportlab.lib.units import inch
 from reportlab.platypus import (KeepTogether, ListFlowable, ListItem, Paragraph, SimpleDocTemplate,
                                 Spacer, Table, TableStyle)
 
-from .config import SHIFTS
+from .config import PLANT_TZ, SHIFTS
 
 INK = colors.HexColor("#0f172a")
 MUTED = colors.HexColor("#64748b")
@@ -62,7 +63,7 @@ def build_pdf(detail: dict, actions: list[str]) -> bytes:
                             author="Production Intelligence Dashboard")
     story = [
         Paragraph(f"Shift Report: {detail['date']}, Shift {detail['shift']} ({window})", H1),
-        Paragraph(f"{scope} &middot; generated {datetime.now():%Y-%m-%d %H:%M} &middot; "
+        Paragraph(f"{scope} &middot; generated {datetime.now(ZoneInfo(PLANT_TZ)):%Y-%m-%d %H:%M %Z} &middot; "
                   "synthetic demonstration data", SMALL),
         Spacer(1, 8),
     ]
