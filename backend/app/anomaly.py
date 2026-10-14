@@ -36,7 +36,7 @@ LEFT JOIN dt USING (station_id, shift_date, shift)
 LABELS = {
     "cycle_ratio": lambda r: f"cycle time {r.cycle_ratio:.2f}x standard",
     "avg_queue_min": lambda r: f"avg queue {r.avg_queue_min:.0f} min",
-    "nc_rate": lambda r: f"{int(r.nc_count)} nonconformances on {int(r.units)} units",
+    "nc_rate": lambda r: f"{int(r.nc_count)} nonconformance{'' if r.nc_count == 1 else 's'} on {int(r.units)} units",
     "downtime_min": lambda r: f"{r.downtime_min:.0f} min downtime",
     "units_short": lambda r: f"only {int(r.units)} units through the station",
 }
